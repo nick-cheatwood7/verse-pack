@@ -1,14 +1,37 @@
 import {
+  IonButton,
+  IonChip,
   IonContent,
   IonHeader,
+  IonItem,
+  IonItemGroup,
+  IonLabel,
   IonPage,
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
-import ExploreContainer from '../components/ExploreContainer/ExploreContainer'
 import './LearnPage.css'
 
+import data from '../test/learnData.test.json'
+import VerseSlides from '../components/VerseSlides'
+
+interface Verse {
+  reference: string
+  content: string
+}
+
+const renderVerseTags = (verses: Array<Verse>) => {
+  return verses.map((v) => {
+    return (
+      <IonChip>
+        <IonLabel>{v.reference}</IonLabel>
+      </IonChip>
+    )
+  })
+}
+
 const LearnPage: React.FC = () => {
+  console.log(JSON.stringify(data))
   return (
     <IonPage>
       <IonHeader>
@@ -22,7 +45,13 @@ const LearnPage: React.FC = () => {
             <IonTitle size='large'>Learn</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name='Learn page' />
+        <IonItemGroup>
+          <IonItem>
+            <IonTitle>Today's Review</IonTitle>
+          </IonItem>
+          <IonItem>{renderVerseTags(data)}</IonItem>
+          <IonButton>Start Review</IonButton>
+        </IonItemGroup>
       </IonContent>
     </IonPage>
   )

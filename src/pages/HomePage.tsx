@@ -10,10 +10,10 @@ import {
   IonIcon,
 } from '@ionic/react'
 
-import ExploreCard from '../components/ExploreCard/ExploreCard'
+import ExploreCard from '../components/ExploreCard'
 import ProgressCard from '../components/ProgressCard'
 import './HomePage.css'
-import DailyVerse from '../components/DailyVerse/DailyVerse'
+import DailyVerse from '../components/DailyVerse'
 
 const currentUser = {
   id: '0wy4913ofh01',

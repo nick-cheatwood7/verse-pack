@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   IonCard,
   IonCardHeader,
@@ -6,7 +7,6 @@ import {
   IonCardContent,
   IonIcon,
   IonProgressBar,
-  IonButton,
   IonText,
 } from '@ionic/react'
 import { analyticsOutline } from 'ionicons/icons'
