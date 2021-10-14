@@ -28,10 +28,11 @@ const ExploreCard: React.FC<ContainerProps> = ({
     <IonCard>
       {imageUrl && <img alt='card' src={imageUrl} />}
       <IonCardHeader>
-        <IonCardSubtitle>
+        <IonCardSubtitle style={{ display: 'flex', alignItems: 'center' }}>
           <IonIcon
             icon={customIcon ? customIcon : compassOutline}
             style={{ paddingRight: '6px' }}
+            size='small'
           />
           {subtitle}
         </IonCardSubtitle>

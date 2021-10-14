@@ -17,8 +17,12 @@ const DailyVerse: React.FC<ContainerProps> = ({ reference, content }) => {
   return (
     <IonCard>
       <IonCardHeader>
-        <IonCardSubtitle>
-          <IonIcon icon={sunnyOutline} style={{ paddingRight: '6px' }} />
+        <IonCardSubtitle style={{ display: 'flex', alignItems: 'center' }}>
+          <IonIcon
+            icon={sunnyOutline}
+            style={{ paddingRight: '6px' }}
+            size='small'
+          />
           Verse of the Day
         </IonCardSubtitle>
         <IonCardTitle>{reference}</IonCardTitle>
