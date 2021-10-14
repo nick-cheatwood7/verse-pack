@@ -1,0 +1,7 @@
+{
+  "name": "VersePack",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
