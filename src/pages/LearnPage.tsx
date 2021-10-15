@@ -3,6 +3,7 @@ import {
   IonChip,
   IonContent,
   IonHeader,
+  IonIcon,
   IonItem,
   IonItemGroup,
   IonLabel,
@@ -17,6 +18,8 @@ import './LearnPage.css'
 import data from '../test/learnData.test.json'
 import VerseSlides from '../components/VerseSlides'
 import StudyPlanCard from '../components/StudyPlanCard'
+import PackCard from '../components/PackCard'
+import { addCircleOutline, flashOutline, heartOutline } from 'ionicons/icons'
 
 interface Verse {
   reference: string
@@ -34,7 +37,6 @@ const renderVerseTags = (verses: Array<Verse>) => {
 }
 
 const LearnPage: React.FC = () => {
-  console.log(JSON.stringify(data))
   return (
     <IonPage>
       <IonHeader>
@@ -51,6 +53,9 @@ const LearnPage: React.FC = () => {
         <IonList>
           <StudyPlanCard verses={data} />
           <IonListHeader>Your Packs</IonListHeader>
+          {/* Render User Packs here */}
+          <PackCard icon={heartOutline} title='Favorites' />
+          <PackCard icon={flashOutline} title='Recently Seen' />
         </IonList>
       </IonContent>
     </IonPage>

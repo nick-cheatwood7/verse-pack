@@ -1,0 +1,38 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.content {
+  padding: 20px;
+  flex-grow: 0;
+  align-self: center;
+}
+
+.icon {
+  padding: 6px;
+}
+
+.title {
+  font-size: 16pt;
+  padding-left: 12px;
+}
+
+.chevron {
+  justify-content: flex-end;
+  padding: 6px;
+}
+
+.actionButton {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.actionButton .icon {
+  justify-content: flex-end;
+}

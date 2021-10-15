@@ -9,12 +9,13 @@ import {
 } from '@ionic/react'
 import { sunnyOutline } from 'ionicons/icons'
 
+import Verse from '../../types/Verse'
+
 interface ContainerProps {
-  reference: string
-  content: string
+  verse: Verse
 }
 
-const DailyVerse: React.FC<ContainerProps> = ({ reference, content }) => {
+const DailyVerse: React.FC<ContainerProps> = ({ verse }) => {
   return (
     <IonCard>
       <IonCardHeader>
@@ -26,9 +27,9 @@ const DailyVerse: React.FC<ContainerProps> = ({ reference, content }) => {
           />
           Verse of the Day
         </IonCardSubtitle>
-        <IonCardTitle>{reference}</IonCardTitle>
+        <IonCardTitle>{verse.reference}</IonCardTitle>
       </IonCardHeader>
-      <IonCardContent>{content}</IonCardContent>
+      <IonCardContent>{verse.content}</IonCardContent>
     </IonCard>
   )
 }

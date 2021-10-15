@@ -10,17 +10,13 @@ import {
   IonLabel,
   IonButton,
 } from '@ionic/react'
-import { analyticsOutline } from 'ionicons/icons'
+import { analyticsOutline, shuffleOutline } from 'ionicons/icons'
 
 import './StudyPlanCard.css'
+import Verse from '../../types/Verse'
 
 interface ContainerProps {
   verses: Array<Verse>
-}
-
-interface Verse {
-  reference: string
-  content: string
 }
 
 const renderVerseTags = (verses: Array<Verse>) => {
@@ -46,9 +42,11 @@ const StudyPlanCard: React.FC<ContainerProps> = ({ verses }) => {
       <IonCardContent className='content'>
         <p>{renderVerseTags(verses)}</p>
       </IonCardContent>
-      <div className='actionButton'>
-        <IonButton expand='block'>Begin</IonButton>
-      </div>
+
+      <IonButton expand='block' className='actionButton' href='/learn/study'>
+        Begin
+        <IonIcon icon={shuffleOutline} className='icon' />
+      </IonButton>
     </IonCard>
   )
 }

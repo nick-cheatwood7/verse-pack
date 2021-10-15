@@ -1,0 +1,29 @@
+:root {
+  /* overlay color */
+  --ion-background-color: white;
+  /* default icon color */
+  --ion-tab-bar-color: #bdbdbd;
+  /* selected icon color */
+  --ion-tab-bar-color-selected: #1e88e5;
+}
+
+ion-tab-bar {
+  /* tab bar background */
+  --background: white;
+  box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.4);
+  border-radius: 16px !important;
+
+  height: 50px;
+  width: 90%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  bottom: 20px;
+  position: relative;
+  margin: 0 auto !important;
+  border-top: none;
+}
+
+ion-tab-button {
+  border-radius: 16px !important;
+}

@@ -9,10 +9,14 @@ import {
   IonTabs,
 } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
-import { book, person, home } from 'ionicons/icons'
+import { book, person, home, searchOutline } from 'ionicons/icons'
+
+// Import pages
 import HomePage from './pages/HomePage'
+import ExplorePage from './pages/ExplorePage'
 import LearnPage from './pages/LearnPage'
 import ProfilePage from './pages/ProfilePage'
+import StudyPage from './pages/StudyPage'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -32,12 +36,14 @@ import '@ionic/react/css/display.css'
 
 /* Theme variables */
 import './theme/variables.css'
+import './theme/FloatingTabBar.css'
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          {/* Define app routes */}
           <Route exact path='/home'>
             <HomePage />
           </Route>
@@ -47,14 +53,25 @@ const App: React.FC = () => (
           <Route path='/profile'>
             <ProfilePage />
           </Route>
+          <Route exact path='/learn/study'>
+            <StudyPage />
+          </Route>
+          <Route exact path='/search'>
+            <ExplorePage />
+          </Route>
           <Route exact path='/'>
             <Redirect to='/home' />
           </Route>
         </IonRouterOutlet>
+        {/* Define tab bar */}
         <IonTabBar slot='bottom'>
           <IonTabButton tab='home' href='/home'>
             <IonIcon icon={home} />
             <IonLabel>Home</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab='search' href='/search'>
+            <IonIcon icon={searchOutline} />
+            <IonLabel>Search</IonLabel>
           </IonTabButton>
           <IonTabButton tab='learn' href='/learn'>
             <IonIcon icon={book} />

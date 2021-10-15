@@ -14,11 +14,17 @@ import ExploreCard from '../components/ExploreCard'
 import ProgressCard from '../components/ProgressCard'
 import './HomePage.css'
 import DailyVerse from '../components/DailyVerse'
+import Verse from '../types/Verse'
 
 const currentUser = {
   id: '0wy4913ofh01',
   name: 'Nick',
   progress: 0.25,
+}
+
+let psuedoVerse: Verse = {
+  reference: 'Genesis 1:1',
+  content: 'In the beginning',
 }
 
 const exploreStyles = {
@@ -47,10 +53,7 @@ const HomePage: React.FC = () => {
           <IonListHeader>For You</IonListHeader>
 
           {/* Display the verse of the day */}
-          <DailyVerse
-            reference='Genesis 1:1'
-            content='In the beginning, God created the heavens and earth'
-          />
+          <DailyVerse verse={psuedoVerse} />
 
           {/* Render the user's weekly progress */}
           <ProgressCard progress={currentUser.progress} />
