@@ -1,0 +1,21 @@
+.subtitle {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  padding-right: 6px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.actionButton {
+  text-align: center;
+  margin: 0px 20px 20px 20px;
+}

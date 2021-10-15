@@ -6,6 +6,8 @@ import {
   IonItem,
   IonItemGroup,
   IonLabel,
+  IonList,
+  IonListHeader,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -14,6 +16,7 @@ import './LearnPage.css'
 
 import data from '../test/learnData.test.json'
 import VerseSlides from '../components/VerseSlides'
+import StudyPlanCard from '../components/StudyPlanCard'
 
 interface Verse {
   reference: string
@@ -45,13 +48,10 @@ const LearnPage: React.FC = () => {
             <IonTitle size='large'>Learn</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonItemGroup>
-          <IonItem>
-            <IonTitle>Today's Review</IonTitle>
-          </IonItem>
-          <IonItem>{renderVerseTags(data)}</IonItem>
-          <IonButton>Start Review</IonButton>
-        </IonItemGroup>
+        <IonList>
+          <StudyPlanCard verses={data} />
+          <IonListHeader>Your Packs</IonListHeader>
+        </IonList>
       </IonContent>
     </IonPage>
   )
