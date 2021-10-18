@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   IonCard,
   IonCardHeader,
@@ -9,14 +9,14 @@ import {
   IonChip,
   IonLabel,
   IonButton,
-} from '@ionic/react'
-import { analyticsOutline, shuffleOutline } from 'ionicons/icons'
+} from '@ionic/react';
+import { analyticsOutline, shuffleOutline } from 'ionicons/icons';
 
-import './StudyPlanCard.css'
-import Verse from '../../types/Verse'
+import './StudyPlanCard.css';
+import Verse from '../../types/Verse';
 
 interface ContainerProps {
-  verses: Array<Verse>
+  verses: Array<Verse>;
 }
 
 const renderVerseTags = (verses: Array<Verse>) => {
@@ -25,30 +25,30 @@ const renderVerseTags = (verses: Array<Verse>) => {
       <IonChip>
         <IonLabel>{v.reference}</IonLabel>
       </IonChip>
-    )
-  })
-}
+    );
+  });
+};
 
 const StudyPlanCard: React.FC<ContainerProps> = ({ verses }) => {
   return (
     <IonCard>
       <IonCardHeader>
-        <IonCardSubtitle className='subtitle'>
-          <IonIcon icon={analyticsOutline} size='small' className='icon' />
+        <IonCardSubtitle className="subtitle">
+          <IonIcon icon={analyticsOutline} size="small" className="icon" />
           Study Plan
         </IonCardSubtitle>
         <IonCardTitle>Today's Review</IonCardTitle>
       </IonCardHeader>
-      <IonCardContent className='content'>
+      <IonCardContent className="content">
         <p>{renderVerseTags(verses)}</p>
       </IonCardContent>
 
-      <IonButton expand='block' className='actionButton' href='/learn/study'>
+      <IonButton expand="block" className="begin-button" href="/learn/study">
         Begin
-        <IonIcon icon={shuffleOutline} className='icon' />
+        <IonIcon icon={shuffleOutline} className="icon" />
       </IonButton>
     </IonCard>
-  )
-}
+  );
+};
 
-export default StudyPlanCard
+export default StudyPlanCard;

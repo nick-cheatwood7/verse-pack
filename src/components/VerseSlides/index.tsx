@@ -1,18 +1,18 @@
-import { IonContent, IonSlide, IonSlides } from '@ionic/react'
-import React from 'react'
-import './VerseSlides.css'
+import { IonContent, IonSlide, IonSlides } from '@ionic/react';
+import React from 'react';
+import './VerseSlides.css';
 
-import Verse from '../../types/Verse'
-import VersePreviewCard from '../VerseCard'
+import Verse from '../../types/Verse';
+import VerseCard from '../VerseCard';
 
 interface ContainerProps {
-  verses: Array<Verse>
+  verses: Array<Verse>;
 }
 
 const slideOpts = {
   initialSlide: 1,
   speed: 400,
-}
+};
 
 // TODO:
 // 1. Render progress bar
@@ -24,11 +24,11 @@ const renderVerseSlides = (verses) => {
   return verses.map((verse) => {
     return (
       <IonSlide>
-        <VersePreviewCard verse={verse} />
+        <VerseCard verse={verse} />
       </IonSlide>
-    )
-  })
-}
+    );
+  });
+};
 
 const VerseSlides: React.FC<ContainerProps> = ({ verses }) => {
   return (
@@ -38,7 +38,7 @@ const VerseSlides: React.FC<ContainerProps> = ({ verses }) => {
         {renderVerseSlides(verses)}
       </IonSlides>
     </IonContent>
-  )
-}
+  );
+};
 
-export default VerseSlides
+export default VerseSlides;

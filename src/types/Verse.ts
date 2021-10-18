@@ -1,6 +1,6 @@
 type Verse = {
-  reference: string
-  content: string
-}
+  reference: string;
+  content: string;
+};
 
-export default Verse
+export default Verse;

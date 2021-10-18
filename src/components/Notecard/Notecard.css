@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(204, 204, 204, 0.5);
+  margin: 20px;
+  padding: 12px;
+  color: black;
+  min-width: 90vw;
+  min-height: 30vh;
+}
+
+.title-centered {
+  font-weight: bold;
+}
+
+.card-title {
+  font-weight: bold;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.card-content {
+  text-align: left;
+  align-items: flex-start;
+  align-content: flex-start;
+}
