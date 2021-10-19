@@ -42,11 +42,15 @@ const LearnPage: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-          <StudyPlanCard verses={getAsVerseArray(globalState.dailyVerses)} />
+          <div className="study-container">
+            <StudyPlanCard verses={getAsVerseArray(globalState.dailyVerses)} />
+          </div>
           <IonListHeader>Your Packs</IonListHeader>
-          {/* Render User Packs here */}
-          <PackCard icon={heartOutline} title="Favorites" />
-          <PackCard icon={flashOutline} title="Recently Seen" />
+          <div className="packs-container">
+            {/* Render User Packs here */}
+            <PackCard icon={heartOutline} title="Favorites" />
+            <PackCard icon={flashOutline} title="Recently Seen" />
+          </div>
         </IonList>
       </IonContent>
     </IonPage>

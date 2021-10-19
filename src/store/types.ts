@@ -8,12 +8,12 @@ export interface GlobalStateInterface {
   isUserAuthenticated: boolean;
   currentUser?: User;
   persistenceType: string;
-  dailyVerses?: Array<Verse> | [];
+  dailyVerses: Array<Verse>;
   study: {
-    items: Array<StudyItem> | [];
+    items: Array<StudyItem>;
     progress: number;
   };
-  userPacks?: Array<Pack> | [];
+  userPacks: Array<Pack>;
 }
 
 export type ActionType = {

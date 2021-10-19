@@ -9,7 +9,7 @@ import Notecard from '../../components/Notecard';
 import { globalContext } from '../../store/Store';
 
 // Import Types
-import { StudyItem } from '../../types';
+import { Verse } from '../../types';
 
 // Import styles
 import './styles.css';
@@ -18,7 +18,8 @@ import './styles.css';
 import data from '../../test/learnData.test.json';
 
 const StudySessionContent: React.FC = () => {
-  const [currentItem, setCurrentItem] = useState({} as StudyItem);
+  const [currentItem, setCurrentItem] = useState({} as Verse);
+  const [correct, setCorrect] = useState([] as Array<Verse>);
   const [showContents, setShowContents] = useState(false);
   const [prompt, setPrompt] = useState('Tap to reveal');
 
@@ -29,22 +30,19 @@ const StudySessionContent: React.FC = () => {
   useEffect(() => {
     // Load in the first study item on component mount
     // setCurrentItem(globalState.study?.items[0]);
-    setCurrentItem(loadTestData(data)[1]);
-  }, [currentItem.verse]);
+    setCurrentItem(loadTestData(data)[0]);
+  }, []);
 
-  const renderContent = (item: StudyItem) => {
+  const renderContent = (item: Verse) => {
     return (
       <IonGrid className="container">
         <IonRow className="row">
           <a role="button" onClick={handleClick}>
             {/* Notecard card goes here*/}
             {!showContents ? (
-              <Notecard title={item.verse.reference} />
+              <Notecard title={item.reference} />
             ) : (
-              <Notecard
-                title={item.verse.reference}
-                content={item.verse.content}
-              />
+              <Notecard title={item.reference} content={item.content} />
             )}
           </a>
         </IonRow>
@@ -65,7 +63,7 @@ const StudySessionContent: React.FC = () => {
           >
             <IonIcon icon={closeOutline} size="large" className="button-icon" />
           </IonButton>
-          <IonButton
+          {/* <IonButton
             color="warning"
             shape="round"
             size="large"
@@ -79,7 +77,7 @@ const StudySessionContent: React.FC = () => {
               size="large"
               className="button-icon"
             />
-          </IonButton>
+          </IonButton> */}
           <IonButton
             color="success"
             shape="round"
@@ -105,22 +103,43 @@ const StudySessionContent: React.FC = () => {
   }
 
   function handleMiss() {
-    alert('missed!');
+    handleClick();
+    loadNextItem();
   }
 
   function handleSuccess() {
-    alert('you got it!');
+    handleClick();
+    setCorrect((correct) => [...correct, currentItem]);
+    loadNextItem();
   }
 
   function loadTestData(data: any) {
-    let array: Array<StudyItem>;
-    array = data.map((verse: any) => {
-      return { verse: verse, correct: false };
+    const array = data.map((verse: any) => {
+      return {
+        reference: verse.reference,
+        content: verse.content,
+      } as Verse;
     });
     return array;
   }
 
-  function loadNextItem() {}
+  function loadNextItem() {
+    // Get the position of the current item in the array of items
+    const verses = loadTestData(data);
+    const indexOfItem = verses.findIndex(
+      (i: any) => i.reference === currentItem.reference
+    );
+    const next = verses[indexOfItem + 1];
+    console.log(`Next item: ${JSON.stringify(next)}`);
+    console.log(indexOfItem);
+    if (indexOfItem + 1 !== verses.length) {
+      // Go to next item
+      setCurrentItem(next);
+    } else {
+      // Already on last item
+      alert('all done!');
+    }
+  }
 
   const handleClick = () => {
     setShowContents(!showContents);
@@ -130,7 +149,7 @@ const StudySessionContent: React.FC = () => {
 
   return (
     <div className="container">
-      {currentItem.verse && renderContent(currentItem)}
+      {currentItem.reference && renderContent(currentItem)}
     </div>
   );
 };
