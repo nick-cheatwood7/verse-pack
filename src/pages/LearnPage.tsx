@@ -1,3 +1,4 @@
+import React, { useContext, useEffect } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -14,7 +15,19 @@ import StudyPlanCard from '../components/StudyPlanCard';
 import PackCard from '../components/PackCard';
 import { flashOutline, heartOutline } from 'ionicons/icons';
 
+import { globalContext } from '../store/Store';
+import { getAsVerseArray } from '../utils/Data';
+
 const LearnPage: React.FC = () => {
+  const { globalState, dispatch } = useContext(globalContext);
+
+  useEffect(() => {
+    dispatch({ type: 'SET_VERSES', payload: data });
+    return () => {
+      // cleanup
+    };
+  }, [dispatch]);
+
   return (
     <IonPage>
       <IonHeader>
@@ -29,7 +42,7 @@ const LearnPage: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-          <StudyPlanCard verses={data} />
+          <StudyPlanCard verses={getAsVerseArray(globalState.dailyVerses)} />
           <IonListHeader>Your Packs</IonListHeader>
           {/* Render User Packs here */}
           <PackCard icon={heartOutline} title="Favorites" />

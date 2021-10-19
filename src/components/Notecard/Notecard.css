@@ -3,28 +3,32 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  /* border: 1px solid black; */
-  border-radius: 10px;
+  align-items: center;
+  border-radius: 6px;
   box-shadow: 5px 5px 15px rgba(204, 204, 204, 0.5);
   margin: 20px;
   padding: 12px;
   color: black;
-  min-width: 90vw;
-  min-height: 30vh;
+  width: 90vw;
+  height: 40vh;
 }
 
 .title-centered {
+  font-size: 18pt;
+  text-align: center;
   font-weight: bold;
 }
 
 .card-title {
+  text-align: center;
+  font-size: 18pt;
   font-weight: bold;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  padding-bottom: 20px;
 }
 
 .card-content {
-  text-align: left;
-  align-items: flex-start;
-  align-content: flex-start;
+  text-align: center;
+  align-items: center;
+  align-content: center;
 }

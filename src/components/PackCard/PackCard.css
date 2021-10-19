@@ -1,4 +1,4 @@
-.card {
+.pack-card {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -6,7 +6,8 @@
   align-content: center;
 }
 
-.content {
+.pack-card-content {
+  align-items: flex-start;
   padding: 20px;
   flex-grow: 0;
   align-self: center;

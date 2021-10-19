@@ -1,9 +1,7 @@
 import { IonContent, IonSlide, IonSlides } from '@ionic/react';
 import React from 'react';
-import './VerseSlides.css';
 
 import Verse from '../../types/Verse';
-import VerseCard from '../VerseCard';
 
 interface ContainerProps {
   verses: Array<Verse>;
@@ -22,11 +20,7 @@ const slideOpts = {
 
 const renderVerseSlides = (verses) => {
   return verses.map((verse) => {
-    return (
-      <IonSlide>
-        <VerseCard verse={verse} />
-      </IonSlide>
-    );
+    return <IonSlide>{/* <VerseCard verse={verse} /> */}</IonSlide>;
   });
 };
 

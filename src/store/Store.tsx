@@ -64,6 +64,7 @@ export const initialState: GlobalStateInterface = {
   focus: false,
   dailyVerses: [],
   userPacks: [],
+  study: { items: [], progress: 0 },
   isUserAuthenticated: false,
   persistenceType: 'sessionStorage',
 };

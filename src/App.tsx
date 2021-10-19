@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
@@ -12,8 +12,11 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { book, person, home, searchOutline } from 'ionicons/icons';
 
+// Import test data
+import testData from './test/learnData.test.json';
+
 // Import global store
-import { Store, globalContext } from '././store/Store';
+import { globalContext } from './store/Store';
 
 // Import pages
 import HomePage from './pages/HomePage';
@@ -44,56 +47,54 @@ import './theme/FloatingTabBar.css';
 
 const App: React.FC = () => {
   const { globalState } = useContext(globalContext);
-  console.log(globalState);
+
   return (
-    <Store>
-      <IonApp>
-        <IonReactRouter>
-          <IonTabs>
-            <IonRouterOutlet>
-              {/* Define app routes */}
-              <Route exact path="/home">
-                <HomePage />
-              </Route>
-              <Route exact path="/learn">
-                <LearnPage />
-              </Route>
-              <Route path="/profile">
-                <ProfilePage />
-              </Route>
-              <Route exact path="/learn/study">
-                <StudyPage />
-              </Route>
-              <Route exact path="/search">
-                <ExplorePage />
-              </Route>
-              <Route exact path="/">
-                <Redirect to="/home" />
-              </Route>
-            </IonRouterOutlet>
-            {/* Define tab bar */}
-            <IonTabBar slot="bottom">
-              <IonTabButton tab="home" href="/home">
-                <IonIcon icon={home} />
-                <IonLabel>Home</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="search" href="/search">
-                <IonIcon icon={searchOutline} />
-                <IonLabel>Search</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="learn" href="/learn">
-                <IonIcon icon={book} />
-                <IonLabel>Learn</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="profile" href="/profile">
-                <IonIcon icon={person} />
-                <IonLabel>Profile</IonLabel>
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs>
-        </IonReactRouter>
-      </IonApp>
-    </Store>
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            {/* Define app routes */}
+            <Route exact path="/home">
+              <HomePage />
+            </Route>
+            <Route exact path="/learn">
+              <LearnPage />
+            </Route>
+            <Route path="/profile">
+              <ProfilePage />
+            </Route>
+            <Route exact path="/learn/study">
+              <StudyPage />
+            </Route>
+            <Route exact path="/search">
+              <ExplorePage />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+          </IonRouterOutlet>
+          {/* Define tab bar */}
+          <IonTabBar slot="bottom" hidden={globalState.focus}>
+            <IonTabButton tab="home" href="/home">
+              <IonIcon icon={home} />
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="search" href="/search">
+              <IonIcon icon={searchOutline} />
+              <IonLabel>Search</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="learn" href="/learn">
+              <IonIcon icon={book} />
+              <IonLabel>Learn</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="profile" href="/profile">
+              <IonIcon icon={person} />
+              <IonLabel>Profile</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
   );
 };
 

@@ -4,21 +4,29 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
-} from '@ionic/react'
-import React from 'react'
+} from '@ionic/react';
+import React, { useContext, useEffect } from 'react';
 
-// Import Types
-import Verse from '../../types/Verse'
+import './styles.css';
 
 // Import Components
-import VerseSlides from '../../components/VerseSlides'
-
-// Import test data
-import data from '../../test/learnData.test.json'
-
-const verseArray: Array<Verse> = [...data]
+import StudySessionContent from '../../components/StudySessionContent';
+import { globalContext } from '../../store/Store';
 
 const StudyPage: React.FC = () => {
+  // Tap into global store
+  const { globalState, dispatch } = useContext(globalContext);
+
+  useEffect(() => {
+    // on mount
+    dispatch({ type: 'SET_FOCUS', payload: false });
+
+    // on component unmount
+    return () => {
+      dispatch({ type: 'SET_FOCUS', payload: false });
+    };
+  }, [dispatch]);
+
   return (
     <IonPage>
       <IonHeader>
@@ -27,16 +35,16 @@ const StudyPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse='condense'>
+        <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size='large'>Study</IonTitle>
+            <IonTitle size="large">Study</IonTitle>
           </IonToolbar>
         </IonHeader>
-        {/* Render out the verse slides */}
-        <VerseSlides verses={verseArray} />
+        {/* Render out the study card */}
+        <StudySessionContent />
       </IonContent>
     </IonPage>
-  )
-}
+  );
+};
 
-export default StudyPage
+export default StudyPage;

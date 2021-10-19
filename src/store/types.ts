@@ -9,7 +9,10 @@ export interface GlobalStateInterface {
   currentUser?: User;
   persistenceType: string;
   dailyVerses?: Array<Verse> | [];
-  studySession?: Array<StudyItem> | [];
+  study: {
+    items: Array<StudyItem> | [];
+    progress: number;
+  };
   userPacks?: Array<Pack> | [];
 }
 

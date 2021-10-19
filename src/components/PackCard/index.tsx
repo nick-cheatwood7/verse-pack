@@ -10,8 +10,8 @@ interface ComponentProps {
 
 const PackCard: React.FC<ComponentProps> = ({ icon, title }) => {
   return (
-    <IonCard className="card">
-      <div className="content">
+    <IonCard className="pack-card">
+      <div className="pack-card-content">
         <IonIcon icon={icon} size="large" className="icon" />
         <IonCardTitle className="title">{title}</IonCardTitle>
       </div>

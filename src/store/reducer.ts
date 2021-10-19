@@ -13,6 +13,11 @@ const Reducer = (state: GlobalStateInterface, action: ActionType): any => {
         ...state,
         currentUser: action.payload,
       };
+    case 'SET_VERSES':
+      return {
+        ...state,
+        dailyVerses: action.payload,
+      };
     case 'AUTHENTICATE_USER':
       return {
         ...state,
