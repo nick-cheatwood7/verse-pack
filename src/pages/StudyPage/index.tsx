@@ -6,7 +6,6 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import React, { useContext, useEffect } from 'react';
-
 import './styles.css';
 
 // Import Components

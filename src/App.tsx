@@ -10,10 +10,13 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { book, person, home, searchOutline } from 'ionicons/icons';
-
-// Import test data
-import testData from './test/learnData.test.json';
+import {
+  book,
+  person,
+  home,
+  searchOutline,
+  albumsOutline,
+} from 'ionicons/icons';
 
 // Import global store
 import { globalContext } from './store/Store';
@@ -24,6 +27,7 @@ import ExplorePage from './pages/ExplorePage';
 import LearnPage from './pages/LearnPage';
 import ProfilePage from './pages/ProfilePage';
 import StudyPage from './pages/StudyPage';
+import ItemPage from './pages/ItemPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -44,6 +48,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import './theme/FloatingTabBar.css';
+import ItemList from './pages/ItemList';
 
 const App: React.FC = () => {
   const { globalState } = useContext(globalContext);
@@ -60,14 +65,14 @@ const App: React.FC = () => {
             <Route exact path="/learn">
               <LearnPage />
             </Route>
-            <Route path="/profile">
-              <ProfilePage />
-            </Route>
             <Route exact path="/learn/study">
               <StudyPage />
             </Route>
-            <Route exact path="/search">
-              <ExplorePage />
+            <Route exact path="/card/:id">
+              <ItemPage verse={{ reference: 'Genesis 1:1', content: 'blah' }} />
+            </Route>
+            <Route exact path="/cards">
+              <ItemList />
             </Route>
             <Route exact path="/">
               <Redirect to="/home" />
@@ -79,17 +84,13 @@ const App: React.FC = () => {
               <IonIcon icon={home} />
               <IonLabel>Home</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="search" href="/search">
-              <IonIcon icon={searchOutline} />
-              <IonLabel>Search</IonLabel>
-            </IonTabButton>
             <IonTabButton tab="learn" href="/learn">
               <IonIcon icon={book} />
               <IonLabel>Learn</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="profile" href="/profile">
-              <IonIcon icon={person} />
-              <IonLabel>Profile</IonLabel>
+            <IonTabButton tab="cards" href="/cards">
+              <IonIcon icon={albumsOutline} />
+              <IonLabel>Cards</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

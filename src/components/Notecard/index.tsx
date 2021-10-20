@@ -13,14 +13,14 @@ function renderCard(title, text) {
     return <div className="title-centered">{title}</div>;
   } else {
     return (
-      <>
-        <div className="card-title">
+      <div>
+        <div className="title-block">
           <span className="title">{title}</span>
         </div>
         <div className="card-content">
           <span className="content">{text}</span>
         </div>
-      </>
+      </div>
     );
   }
 }

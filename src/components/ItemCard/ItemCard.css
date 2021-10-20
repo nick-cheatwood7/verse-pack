@@ -1,0 +1,51 @@
+/* Container styles */
+.card {
+  background-color: blueviolet;
+  display: flex;
+  flex-basis: content;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: stretch;
+  padding: 0;
+}
+
+.content {
+  flex: 1 1 auto;
+  padding: 12px 12px 12px 24px;
+  font-size: 14pt;
+}
+
+/* Text styles */
+.title-centered {
+  align-self: center;
+}
+
+.term-block {
+  flex-grow: 1;
+  align-content: center;
+  padding: 12px 6px 12px 12px;
+  width: 100%;
+  font-size: 16pt;
+  font-weight: bold;
+  border-bottom: 1px dashed black;
+}
+
+div.term-block span {
+  align-self: center;
+}
+
+/* Input styles */
+input.title-edit:focus {
+  outline: none;
+  border-bottom: 1px solid blue;
+}
+
+.title-edit {
+  background: transparent;
+  border: none;
+  text-align: center;
+  height: 55px;
+  border-bottom: 0.5px solid gray;
+  width: 70%;
+}

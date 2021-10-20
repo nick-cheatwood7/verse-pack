@@ -6,7 +6,6 @@ import { User, Verse, Pack, StudyItem } from '../types';
 export interface GlobalStateInterface {
   focus: boolean;
   isUserAuthenticated: boolean;
-  currentUser?: User;
   persistenceType: string;
   dailyVerses: Array<Verse>;
   study: {
@@ -14,6 +13,7 @@ export interface GlobalStateInterface {
     progress: number;
   };
   userPacks: Array<Pack>;
+  user: User;
 }
 
 export type ActionType = {

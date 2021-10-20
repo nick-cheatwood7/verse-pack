@@ -62,6 +62,11 @@ export const globalContext = createContext({} as ContextType);
 
 export const initialState: GlobalStateInterface = {
   focus: false,
+  user: {
+    id: '123',
+    name: 'Nick',
+    email: 'nicolas@softwarethatfits.com',
+  },
   dailyVerses: [],
   userPacks: [],
   study: { items: [], progress: 0 },

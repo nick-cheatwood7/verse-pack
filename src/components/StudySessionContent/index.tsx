@@ -24,13 +24,14 @@ const StudySessionContent: React.FC = () => {
   const [prompt, setPrompt] = useState('Tap to reveal');
 
   // Tap into global store
-  const { globalState } = useContext(globalContext);
+  const { globalState, dispatch } = useContext(globalContext);
 
   // Lifecycle methods
   useEffect(() => {
     // Load in the first study item on component mount
     // setCurrentItem(globalState.study?.items[0]);
     setCurrentItem(loadTestData(data)[0]);
+    console.log('View loaded');
   }, []);
 
   const renderContent = (item: Verse) => {
@@ -141,11 +142,11 @@ const StudySessionContent: React.FC = () => {
     }
   }
 
-  const handleClick = () => {
+  function handleClick() {
     setShowContents(!showContents);
     const promptText = showContents ? 'Tap to reveal' : "How'd you do?";
     setPrompt(promptText);
-  };
+  }
 
   return (
     <div className="container">
