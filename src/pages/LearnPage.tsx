@@ -10,23 +10,13 @@ import {
 } from '@ionic/react';
 import './LearnPage.css';
 
-import data from '../test/learnData.test.json';
 import StudyPlanCard from '../components/StudyPlanCard';
-import PackCard from '../components/PackCard';
-import { flashOutline, heartOutline } from 'ionicons/icons';
 
 import { globalContext } from '../store/Store';
 import { getAsVerseArray } from '../utils/Data';
 
 const LearnPage: React.FC = () => {
-  const { globalState, dispatch } = useContext(globalContext);
-
-  useEffect(() => {
-    dispatch({ type: 'SET_VERSES', payload: data });
-    return () => {
-      // cleanup
-    };
-  }, [dispatch]);
+  const { globalState } = useContext(globalContext);
 
   return (
     <IonPage>
@@ -45,12 +35,11 @@ const LearnPage: React.FC = () => {
           <div className="study-container">
             <StudyPlanCard verses={getAsVerseArray(globalState.dailyVerses)} />
           </div>
-          <IonListHeader>Your Packs</IonListHeader>
+          {/* <IonListHeader>Your Packs</IonListHeader>
           <div className="packs-container">
-            {/* Render User Packs here */}
             <PackCard icon={heartOutline} title="Favorites" />
             <PackCard icon={flashOutline} title="Recently Seen" />
-          </div>
+          </div> */}
         </IonList>
       </IonContent>
     </IonPage>

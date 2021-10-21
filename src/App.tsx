@@ -69,7 +69,13 @@ const App: React.FC = () => {
               <StudyPage />
             </Route>
             <Route exact path="/card/:id">
-              <ItemPage verse={{ reference: 'Genesis 1:1', content: 'blah' }} />
+              <ItemPage
+                card={{
+                  userId: globalState.user.id,
+                  reference: 'Genesis 1:1',
+                  content: 'blah',
+                }}
+              />
             </Route>
             <Route exact path="/cards">
               <ItemList />

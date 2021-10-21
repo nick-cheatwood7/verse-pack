@@ -1,43 +1,29 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
-  IonPage,
   IonHeader,
   IonToolbar,
-  IonTitle,
-  IonContent,
-  IonInput,
   IonButtons,
   IonBackButton,
+  IonTitle,
   IonButton,
-  IonItem,
-  IonTextarea,
-  IonFooter,
   IonIcon,
+  IonContent,
+  IonItem,
+  IonInput,
+  IonTextarea,
 } from '@ionic/react';
-
-// Import components
 import { trashBinOutline } from 'ionicons/icons';
 import { globalContext } from '../../store/Store';
-
-// Import utils
-import { saveCard, getSavedCards } from '../../utils/Storage';
-
-// Import Types/Classes
 import { UserCard } from '../../types';
-import Card from '../../models/Card';
-
-// Import styles
-import './ItemPage.css';
+import { Card } from '../../models';
+import { saveCard } from '../../utils/Storage';
+import './CardDetail.css';
 
 interface ComponentProps {
   card: UserCard;
 }
 
-// TODO:
-// OnMount, render a new item card with empty term & criteria, default to edit mode
-// Render action buttons on the bottom
-
-const ItemPage: React.FC<ComponentProps> = ({ card }) => {
+const CardDetail: React.FC<ComponentProps> = ({ card }) => {
   const { globalState } = useContext(globalContext);
   const [reference, setReference] = useState(card.reference);
   const [content, setContent] = useState(card.content);
@@ -56,7 +42,7 @@ const ItemPage: React.FC<ComponentProps> = ({ card }) => {
   }, [card, content, globalState, reference]);
 
   return (
-    <IonPage>
+    <div>
       {/* Render the header */}
       <IonHeader>
         <IonToolbar>
@@ -93,8 +79,8 @@ const ItemPage: React.FC<ComponentProps> = ({ card }) => {
           />
         </IonItem>
       </IonContent>
-    </IonPage>
+    </div>
   );
 };
 
-export default ItemPage;
+export default CardDetail;

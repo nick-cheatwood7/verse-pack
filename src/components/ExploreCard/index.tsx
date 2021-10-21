@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   IonCard,
   IonCardContent,
@@ -6,16 +6,16 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonIcon,
-} from '@ionic/react'
+} from '@ionic/react';
 
-import { compassOutline } from 'ionicons/icons'
+import { compassOutline } from 'ionicons/icons';
 
 interface ContainerProps {
-  imageUrl?: string
-  subtitle?: JSX.Element | string
-  title: string
-  content: JSX.Element | string
-  customIcon?: string
+  imageUrl?: string;
+  subtitle?: JSX.Element | string;
+  title?: string;
+  content: JSX.Element | string;
+  customIcon?: string;
 }
 
 const ExploreCard: React.FC<ContainerProps> = ({
@@ -27,13 +27,13 @@ const ExploreCard: React.FC<ContainerProps> = ({
 }) => {
   return (
     <IonCard>
-      {imageUrl && <img alt='card' src={imageUrl} />}
+      {imageUrl && <img alt="card" src={imageUrl} />}
       <IonCardHeader>
         <IonCardSubtitle style={{ display: 'flex', alignItems: 'center' }}>
           <IonIcon
             icon={customIcon ? customIcon : compassOutline}
             style={{ paddingRight: '6px' }}
-            size='small'
+            size="small"
           />
           {subtitle}
         </IonCardSubtitle>
@@ -41,7 +41,7 @@ const ExploreCard: React.FC<ContainerProps> = ({
       </IonCardHeader>
       <IonCardContent>{content}</IonCardContent>
     </IonCard>
-  )
-}
+  );
+};
 
-export default ExploreCard
+export default ExploreCard;

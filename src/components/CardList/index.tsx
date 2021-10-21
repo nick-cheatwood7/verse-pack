@@ -1,52 +1,27 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import {
-  IonContent,
-  IonPage,
-  IonList,
-  IonItem,
-  IonTitle,
   IonHeader,
   IonToolbar,
+  IonTitle,
+  IonContent,
   IonButtons,
   IonButton,
   IonIcon,
   IonSearchbar,
-  IonText,
+  IonList,
+  IonItem,
 } from '@ionic/react';
-import { addCircleOutline, addOutline, createOutline } from 'ionicons/icons';
-import { UserCard, Verse } from '../../types';
+import { createOutline } from 'ionicons/icons';
+import { UserCard } from '../../types';
+import { Card } from '../../models';
 import { globalContext } from '../../store/Store';
 
-// Test data
-import { getSavedCards } from '../../utils/Storage';
+interface ComponentProps {
+  cards: Array<UserCard>;
+}
 
-// Import classes
-import { Card } from '../../models';
-
-const renderItemList = (items: Array<Verse>) => {
-  return items.map((item, idx) => {
-    return <IonItem key={idx}>{item.reference}</IonItem>;
-  });
-};
-
-const ItemList: React.FC = () => {
-  // TODO:
-  // Read in cards on db
-  // Read in cards in localStorage
-  // Set cards to global state
-
-  // Link global state
+const CardList: React.FC<ComponentProps> = ({ cards }) => {
   const { globalState } = useContext(globalContext);
-  // Define state
-  const [items, setItems] = useState([]);
-  // Lifecycle methods
-  useEffect(() => {
-    setItems(getSavedCards());
-    return () => {
-      // Do nothing
-    };
-  }, [setItems]);
-
   const handleCreateCard = () => {
     // TODO:
     // Create card on DB and get the id back
@@ -58,9 +33,13 @@ const ItemList: React.FC = () => {
     // Load up the detail page and default to a new Verse
     // route to window
   };
-
+  const renderItemList = (cards: Array<UserCard>) => {
+    return cards.map((card, idx) => {
+      return <IonItem key={idx}>{card.reference}</IonItem>;
+    });
+  };
   return (
-    <IonPage>
+    <div>
       <IonHeader>
         <IonToolbar>
           <IonTitle size="large">Your Cards</IonTitle>
@@ -91,11 +70,11 @@ const ItemList: React.FC = () => {
         </IonHeader>
         <IonList>
           {/* Render list items here */}
-          {renderItemList(items)}
+          {renderItemList(cards)}
         </IonList>
       </IonContent>
-    </IonPage>
+    </div>
   );
 };
 
-export default ItemList;
+export default CardList;
